@@ -13,4 +13,23 @@ public static class Helper
          return camera;
       }
    }
+   
+   public static Bounds CalculateBounds (GameObject go)
+   {
+      Bounds bounds = new Bounds();
+      bounds.size = Vector3.zero;
+      Collider2D[] colliders = go.GetComponentsInChildren<Collider2D>();
+      foreach (Collider2D col in colliders)
+      {
+         bounds.Encapsulate(col.bounds);
+      }
+
+      return bounds;
+   }
+
+   public static T RandomFromList<T>(List<T> list)
+   {
+      return list[Random.Range(0, list.Count - 1)];
+   }
+   
 }

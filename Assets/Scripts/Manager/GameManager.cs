@@ -8,25 +8,27 @@ public class GameManager : MySingleton<GameManager>
     public override bool DoDestroyOnLoad { get; }
 
     [HideInInspector] public Player player;
-    
+
     [Header("Player")]
     [SerializeField] private GameObject playerPrefab;
 
-    [Header("Parents")] public Transform particleParent;
+    [Header("Parents")]
+    public Transform particleParent;
 
     private void Start()
     {
         OnGameStart();
     }
-
     private void OnGameStart()
     {
+        DungeonManager.Instance.GenerateDungeon();
         SpawnPlayer();
     }
 
     private void SpawnPlayer()
     {
-        player = Instantiate(playerPrefab, Vector2.zero, Quaternion.identity).GetComponent<Player>();
+        player = Instantiate(playerPrefab, DungeonManager.Instance.GetPlayerSpawn(), Quaternion.identity).GetComponent<Player>();
         CameraMovement.Instance.SetPlayerRigidBody(player.playerMovement.rb);
+        CameraMovement.Instance.transform.position = player.transform.position;
     }
 }

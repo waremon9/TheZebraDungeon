@@ -29,6 +29,7 @@ public abstract class MySingleton<T> : MonoBehaviour where T : MySingleton<T>
                 DontDestroyOnLoad(this);
             }
             _instance = (T)this;
+            Debug.Log(name);
         }
         else
         {
