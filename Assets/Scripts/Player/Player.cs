@@ -16,4 +16,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private PlayerShoot _playerShoot;
+    public PlayerShoot playerShoot
+    {
+        get
+        {
+            if (_playerShoot) return _playerShoot;
+            _playerShoot = GetComponent<PlayerShoot>();
+            return _playerShoot;
+        }
+    }
+
 }
