@@ -8,7 +8,11 @@ public class GameManager : MySingleton<GameManager>
     public override bool DoDestroyOnLoad { get; }
 
     [HideInInspector] public Player player;
+    
+    [Header("Player")]
     [SerializeField] private GameObject playerPrefab;
+
+    [Header("Parents")] public Transform particleParent;
 
     private void Start()
     {
@@ -23,6 +27,6 @@ public class GameManager : MySingleton<GameManager>
     private void SpawnPlayer()
     {
         player = Instantiate(playerPrefab, Vector2.zero, Quaternion.identity).GetComponent<Player>();
-        CameraMovement.Instance.SetPlayerRigidBody(player.playerMovement.rigidbody2D);
+        CameraMovement.Instance.SetPlayerRigidBody(player.playerMovement.rb);
     }
 }

@@ -9,6 +9,7 @@ public class BulletManager : MySingleton<BulletManager>
         get { return true; }
     }
 
+    [Header("Bullet")]
     public Transform bulletParent;
     public Bullet bulletPrefab;
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -12,6 +13,8 @@ public class Bullet : MonoBehaviour
     private bool fromPlayer;
 
     private Rigidbody2D rb;
+
+    public ParticleSystem explosionParticle;
     
     private void Awake()
     {
@@ -37,13 +40,19 @@ public class Bullet : MonoBehaviour
         if (!fromPlayer && other.gameObject == GameManager.Instance.player.gameObject)
         {
             Debug.Log("hit player");
-            Destroy(gameObject);
+            DestroyBullet();
             return;
         }
 
-        if (other.CompareTag("Obstacle"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            Destroy(gameObject);
+            DestroyBullet();
         }
+    }
+
+    private void DestroyBullet()
+    {
+        Instantiate(explosionParticle, transform.position, quaternion.identity, GameManager.Instance.particleParent);
+        Destroy(gameObject);
     }
 }

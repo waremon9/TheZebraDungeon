@@ -11,15 +11,15 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private Rigidbody2D _rigidbody2D;
-    public Rigidbody2D rigidbody2D
+    private Rigidbody2D _rb;
+    public Rigidbody2D rb
     {
-        get { return _rigidbody2D; }
+        get { return _rb; }
     }
     
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -37,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 velocity = new Vector2(horizontalInput, verticalInput).normalized * speed * Time.fixedDeltaTime;
-        _rigidbody2D.velocity = velocity;
+        _rb.velocity = velocity;
     }
 
     private void AimAtCursor()
     {
-        Vector2 dir =  _rigidbody2D.position - (Vector2)Helper.Camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir =  _rb.position - (Vector2)Helper.Camera.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        _rigidbody2D.SetRotation(Quaternion.Euler(new Vector3(0,0,angle+90)));
+        _rb.SetRotation(Quaternion.Euler(new Vector3(0,0,angle+90)));
     }
 }
