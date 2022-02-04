@@ -222,8 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.7
   defaultZoom: 6
-  maxZoom: 10
-  zoomSpeed: 2
+  maxZoom: 7.5
+  zoomSpeed: 0.4
 --- !u!1001 &449615262064860657
 PrefabInstance:
   m_ObjectHideFlags: 0
