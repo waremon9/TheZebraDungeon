@@ -14,7 +14,18 @@ public static class Helper
       }
    }
    
-   public static Bounds CalculateBounds (GameObject go)
+   public static Bounds CalculateBoundsSpriteRenderer (GameObject go)
+   {
+      Bounds bounds = new Bounds();
+      bounds.size = Vector3.zero;
+      SpriteRenderer[] colliders = go.GetComponentsInChildren<SpriteRenderer>();
+      foreach (SpriteRenderer col in colliders)
+      {
+         bounds.Encapsulate(col.bounds);
+      }
+      return bounds;
+   }
+   public static Bounds CalculateBoundsCollider2D (GameObject go)
    {
       Bounds bounds = new Bounds();
       bounds.size = Vector3.zero;
@@ -23,7 +34,6 @@ public static class Helper
       {
          bounds.Encapsulate(col.bounds);
       }
-
       return bounds;
    }
 

@@ -46,5 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbRooms: 12
   emptyRoomRatio: 3
-  room: {fileID: 1236184479801996545, guid: 47de725d5802fca46825909ae60f0d51, type: 3}
+  room: {fileID: 1378281102171669821, guid: 47de725d5802fca46825909ae60f0d51, type: 3}
+  corridor: {fileID: 6499722814777465551, guid: 2e80b39dcdb5567409de1fee9f2d03f0, type: 3}
   roomParent: {fileID: 0}
+  corridorParent: {fileID: 0}
